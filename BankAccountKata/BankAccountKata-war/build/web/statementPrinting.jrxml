@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7e7f6af8-4120-407d-ab01-79d4c65d3fb2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="7a887c43-a361-4811-a907-e58afdfa10b2">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     account.`ACCOUNTNUMBER` AS account_ACCOUNTNUMBER,
+     account.`BALANCE` AS account_BALANCE,
+     account.`OVERDRAFT` AS account_OVERDRAFT,
+     account.`USER_IDUSER` AS account_USER_IDUSER,
+     operation.`OPERATIONNUMBER` AS operation_OPERATIONNUMBER,
+     operation.`AMOUNT` AS operation_AMOUNT,
+     operation.`DATEOPERATION` AS operation_DATEOPERATION,
+     operation.`TYPEOPERATION` AS operation_TYPEOPERATION,
+     operation.`ACCOUNT_ACCOUNTNUMBER` AS operation_ACCOUNT_ACCOUNTNUMBER,
+     operation.`USER_IDUSER` AS operation_USER_IDUSER,
+     user.`IDUSER` AS user_IDUSER,
+     user.`LOGIN` AS user_LOGIN,
+     user.`NAME` AS user_NAME,
+     user.`PASSWORD` AS user_PASSWORD
+FROM
+     `account` account INNER JOIN `operation` operation ON account.`ACCOUNTNUMBER` = operation.`ACCOUNT_ACCOUNTNUMBER`
+     INNER JOIN `user` user ON account.`USER_IDUSER` = user.`IDUSER`
+     AND user.`IDUSER` = operation.`USER_IDUSER`]]>
+		</queryString>
+		<field name="account_BALANCE" class="java.lang.Double"/>
+		<field name="operation_AMOUNT" class="java.lang.Double"/>
+		<field name="operation_DATEOPERATION" class="java.lang.String"/>
+		<field name="operation_TYPEOPERATION" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="accountId" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     operation.`OPERATIONNUMBER` AS operation_OPERATIONNUMBER,
+     operation.`AMOUNT` AS operation_AMOUNT,
+     operation.`DATEOPERATION` AS operation_DATEOPERATION,
+     operation.`TYPEOPERATION` AS operation_TYPEOPERATION,
+     operation.`ACCOUNT_ACCOUNTNUMBER` AS operation_ACCOUNT_ACCOUNTNUMBER,
+     operation.`USER_IDUSER` AS operation_USER_IDUSER,
+     user.`IDUSER` AS user_IDUSER,
+     user.`LOGIN` AS user_LOGIN,
+     user.`NAME` AS user_NAME,
+     user.`PASSWORD` AS user_PASSWORD,
+     account.`ACCOUNTNUMBER` AS account_ACCOUNTNUMBER,
+     account.`BALANCE` AS account_BALANCE,
+     account.`OVERDRAFT` AS account_OVERDRAFT,
+     account.`USER_IDUSER` AS account_USER_IDUSER
+FROM
+     `user` user INNER JOIN `operation` operation ON user.`IDUSER` = operation.`USER_IDUSER`
+     INNER JOIN `account` account ON user.`IDUSER` = account.`USER_IDUSER`
+     AND account.`ACCOUNTNUMBER` = operation.`ACCOUNT_ACCOUNTNUMBER`
+where 
+ operation.`ACCOUNT_ACCOUNTNUMBER` =$P{accountId}]]>
+	</queryString>
+	<field name="operation_OPERATIONNUMBER" class="java.lang.Long"/>
+	<field name="operation_AMOUNT" class="java.lang.Double"/>
+	<field name="operation_DATEOPERATION" class="java.lang.String"/>
+	<field name="operation_TYPEOPERATION" class="java.lang.String"/>
+	<field name="operation_ACCOUNT_ACCOUNTNUMBER" class="java.lang.Long"/>
+	<field name="operation_USER_IDUSER" class="java.lang.Long"/>
+	<field name="user_IDUSER" class="java.lang.Long"/>
+	<field name="user_LOGIN" class="java.lang.String"/>
+	<field name="user_NAME" class="java.lang.String"/>
+	<field name="user_PASSWORD" class="java.lang.String"/>
+	<field name="account_ACCOUNTNUMBER" class="java.lang.Long"/>
+	<field name="account_BALANCE" class="java.lang.Double"/>
+	<field name="account_OVERDRAFT" class="java.lang.Double"/>
+	<field name="account_USER_IDUSER" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="109" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="11" width="242" height="84" uuid="e56ed540-d69a-4d2d-b067-768fb7890573"/>
+				<imageExpression><![CDATA["C:\\Users\\LENOVO\\Documents\\NetBeansProjects\\BankAccountKata\\BankAccountKata-war\\web\\logo-sg.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="331" y="11" width="224" height="36" uuid="041dcc67-b705-4a24-9be9-54d02f5ae052"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relevé de compte]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="293" y="60" width="262" height="20" uuid="761f11d4-6486-4609-99cb-a59621df377a"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[COMPTE DE PARTICULIER - en euros]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="293" y="80" width="28" height="20" uuid="e58aefa9-56a8-4097-b83f-c5dd8599dee9"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[N°:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="331" y="80" width="100" height="20" uuid="34fefc82-64d2-4283-9832-140d4401327b"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{account_ACCOUNTNUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="86" splitType="Stretch">
+			<staticText>
+				<reportElement x="293" y="12" width="78" height="20" uuid="2acbf340-ed3a-44ac-ac22-83ab217e6285"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Monsieur:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="371" y="12" width="168" height="20" uuid="86f0ce8e-bacc-4d9c-8abe-9ad8b0554a33"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{user_NAME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="187" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table 1" style="table 1" x="36" y="19" width="491" height="99" uuid="5bc0e680-8374-45b1-b2f3-ae7102349230"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="New Dataset 1" uuid="5cfed7e8-b2fa-4dfd-ae90-5046146b1d38">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="c99c8e6c-42dc-4ffc-965c-173e63b49000">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="bfa79d6f-4e12-4f06-a984-d8fa39a47484"/>
+								<text><![CDATA[Date]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="ab92a491-4820-4b65-857b-e9a2528a7753"/>
+								<textFieldExpression><![CDATA[$F{operation_DATEOPERATION}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="140" uuid="082ebc69-2a6f-4ece-965b-f6f6b303125e">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="24" y="0" width="90" height="30" uuid="bb119d5a-efe3-43d7-8e51-db72f02a4495"/>
+								<text><![CDATA[Amount]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="24" y="0" width="90" height="20" uuid="886a83da-894d-4a29-9b4d-e3f751dee181"/>
+								<textFieldExpression><![CDATA[$F{operation_AMOUNT}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="129" uuid="c5bab8d3-4988-4098-a479-797575d5cf7d">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="8d39486c-78ca-4cca-8e94-629dc7e730ca"/>
+								<text><![CDATA[Type]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="2a617a7b-fc02-4983-8fc6-64cec85d97a3"/>
+								<textFieldExpression><![CDATA[$F{operation_TYPEOPERATION}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<textField>
+				<reportElement x="371" y="0" width="106" height="34" uuid="02500af0-6e95-4732-b766-de3b565c86b5"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{account_BALANCE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="271" y="0" width="100" height="34" uuid="f88d93ea-8223-49ff-97cf-9aaba305badc"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Balance:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="477" y="0" width="56" height="34" uuid="da3b0c9b-6419-493a-9f65-13b31b3dcb3c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[euros]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

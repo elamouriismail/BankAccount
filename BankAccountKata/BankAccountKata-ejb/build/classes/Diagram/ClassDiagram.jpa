@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="Entity" v="2.7.1" sm="false" xs="false" id="_15196424026401" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+    <jpa:entity xre="false" compositePrimaryKeyClass="AccountPK" abs="false" class="Account" v="true" minimized="false" rootElement="_15196424026401" id="_1519642417610">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="double" v="true" name="balance" id="_151964254634814">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="double" v="true" name="overdraft" id="_151964254767815">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1519642425051" connected-attribute-id="_151964293281122" v="true" name="user" id="_151964293281021">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:one-to-many orp="false" collection-type="java.util.List" connected-entity-id="_1519642428612" connected-attribute-id="_151964289325719" v="true" name="operations" id="_151964289325920">
+                <jpa:bv/>
+            </jpa:one-to-many>
+            <jpa:id attribute-type="Long" v="true" name="accountNumber" id="_15196424176932">
+                <jpa:bv/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Account.findAll">
+            <jpa:query>Select e from Account e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Account.findByBalance">
+            <jpa:query>Select a from Account a where a.balance=:balance</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Account.findByOverdraft">
+            <jpa:query>Select a from Account a where a.overdraft=:overdraft</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="UserPK" abs="false" class="User" v="true" minimized="false" rootElement="_15196424026401" id="_1519642425051">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" id="_151964244894012">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="login" id="_151968572532583">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="password" id="_151968572765984">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:one-to-many orp="false" collection-type="java.util.List" connected-entity-id="_1519642417610" connected-attribute-id="_151964293281021" v="true" name="accounts" id="_151964293281122">
+                <jpa:bv/>
+            </jpa:one-to-many>
+            <jpa:one-to-many orp="false" collection-type="java.util.List" connected-entity-id="_1519642428612" connected-attribute-id="_151966691476010" v="true" name="operations" id="_151966691486711">
+                <jpa:bv/>
+            </jpa:one-to-many>
+            <jpa:id attribute-type="Long" v="true" name="idUser" id="_15196424250514">
+                <jpa:bv/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="User.findAll">
+            <jpa:query>Select e from User e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="User.findByName">
+            <jpa:query>Select c from User c where c.name=:name</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="User.findByPassword">
+            <jpa:query>Select c from User c where c.password=:password</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="User.findByLogin">
+            <jpa:query>Select u from User u where u.login=:login</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="User.findByPassword">
+            <jpa:query>Select u from User u where u.password=:password</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="OperationPK" abs="false" class="Operation" v="true" minimized="false" rootElement="_15196424026401" id="_1519642428612">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="dateOperation" id="_151964273681716">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="double" v="true" name="amount" id="_151964273742617">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="typeOperation" id="_1519729858141257">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1519642417610" connected-attribute-id="_151964289325920" v="true" name="account" id="_151964289325719">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1519642425051" connected-attribute-id="_151966691486711" v="true" name="user" id="_151966691476010">
+                <jpa:bv/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" v="true" name="operationNumber" id="_15196424286128">
+                <jpa:bv/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Operation.findAll">
+            <jpa:query>Select e from Operation e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Operation.findByDateOperation">
+            <jpa:query>Select o from Operation o where o.dateOperation=:dateOperation</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Operation.findByAmount">
+            <jpa:query>Select o from Operation o where o.amount=:amount</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Operation.findByAttribute2">
+            <jpa:query>Select o from Operation o where o.attribute2=:attribute2</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Operation.findByTypeOperation">
+            <jpa:query>Select o from Operation o where o.typeOperation=:typeOperation</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:snp e="true" loc="BEFORE_PACKAGE">/**
+ * This file was generated by the JPA Modeler
+ */</jpa:snp>
+    <jpa:inf e="true" n="java.io.Serializable"/>
+    <jpa:diagram>
+        <plane elementRef="_15196424026401">
+            <shape elementRef="_1519642417610">
+                <Bounds x="420.0" y="30.0" width="143.0" height="168.0"/>
+            </shape>
+            <shape elementRef="_1519642425051">
+                <Bounds x="36.0" y="41.0" width="128.0" height="189.0"/>
+            </shape>
+            <shape elementRef="_1519642428612">
+                <Bounds x="210.0" y="181.0" width="152.0" height="189.0"/>
+            </shape>
+        </plane>
+    </jpa:diagram>
+</jpa:entity-mappings>
